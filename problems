@@ -1,0 +1,23 @@
+Problems and issues:
+
+Create an upgrade table for blocks
+https://github.com/cuberite/cuberite/issues/4381
+
+Players aren’t shown in the correct places
+https://github.com/cuberite/cuberite/issues/4275
+
+Skylight does not spread properly during rain
+https://github.com/cuberite/cuberite/issues/4018
+
+Levers don’t change track direction
+https://github.com/cuberite/cuberite/issues/4342
+
+Ghast not flying
+https://github.com/cuberite/cuberite/issues/4317
+Needs a can fly function
+
+Server crashes in function call ClickActionToString
+https://github.com/cuberite/cuberite/issues/4270
+
+Lilypads display blocks above them
+https://github.com/cuberite/cuberite/issues/4254
