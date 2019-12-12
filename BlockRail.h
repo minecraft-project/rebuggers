@@ -623,28 +623,28 @@ public:
 		}
 		//Replace block North
 		if (num == 1) {
-			a_Meta = TurnLeftToRight(a_Meta);
+			a_Meta = TurnNorthSouth(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX + 1, a_BlockY + 1, a_BlockZ }, a_Meta);
 		}
 		//Replace block south
 		else if (num == 2) {
-			a_Meta = TurnLeftToRight(a_Meta);
+			a_Meta = TurnNorthSouth(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX - 1, a_BlockY + 1, a_BlockZ }, a_Meta);
 		}
 		//replace block East
 		else if (num == 3) {
-			a_Meta = TurnUpToDown(a_Meta);
+			a_Meta = TurnEastWest(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 }, a_Meta);
 		}
 		//replace block West
 		else if (num == 4) {
-			a_Meta = TurnUpToDown(a_Meta);
+			a_Meta = TurnEastWest(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 }, a_Meta);
 		}
 		
 	}
 
-	static NIBBLETYPE TurnLeftToRight(NIBBLETYPE a_Meta)
+	static NIBBLETYPE TurnNorthSouth(NIBBLETYPE a_Meta)
 	{
 		if (a_Meta == E_META_RAIL_CURVED_ZM_XM) {
 			a_Meta = E_META_RAIL_CURVED_ZP_XM;
@@ -664,7 +664,7 @@ public:
 		return a_Meta;
 	}
 
-	static NIBBLETYPE TurnUpToDown(NIBBLETYPE a_Meta)
+	static NIBBLETYPE TurnEastWest(NIBBLETYPE a_Meta)
 	{
 		if (a_Meta == E_META_RAIL_CURVED_ZM_XM) {
 			a_Meta = E_META_RAIL_CURVED_ZM_XP;
