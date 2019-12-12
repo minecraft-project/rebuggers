@@ -588,23 +588,23 @@ public:
 		BLOCKTYPE Block = a_ChunkInterface.GetBlock({ a_BlockX, a_BlockY, a_BlockZ });
 		NIBBLETYPE a_Meta;
 		int num = 0;
+		//Block East is where rail is
 		if (a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 }) == E_META_RAIL_CURVED_ZM_XM
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 }) == E_META_RAIL_CURVED_ZM_XP
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 }) == E_META_RAIL_CURVED_ZP_XM
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 }) == E_META_RAIL_CURVED_ZP_XP) {
-			printf("What");
 			a_Meta = a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 });
-			printf("%d %d %d", a_BlockX, a_BlockY + 1, a_BlockZ - 1);
 			num = 3;
 		}
+		//Block West is where rail is
 		else if (a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 }) == E_META_RAIL_CURVED_ZM_XM
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 }) == E_META_RAIL_CURVED_ZM_XP
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 }) == E_META_RAIL_CURVED_ZP_XM
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 }) == E_META_RAIL_CURVED_ZP_XP) {
-			printf("In");
 			a_Meta = a_ChunkInterface.GetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 });
 			num = 4;
 		}
+		//Block North is where rail is
 		else if (a_ChunkInterface.GetBlockMeta({ a_BlockX + 1, a_BlockY + 1, a_BlockZ }) == E_META_RAIL_CURVED_ZM_XM
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX + 1, a_BlockY + 1, a_BlockZ }) == E_META_RAIL_CURVED_ZM_XP
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX + 1, a_BlockY + 1, a_BlockZ }) == E_META_RAIL_CURVED_ZP_XM
@@ -612,6 +612,7 @@ public:
 			a_Meta = a_ChunkInterface.GetBlockMeta({ a_BlockX + 1, a_BlockY + 1, a_BlockZ });
 			num = 1;
 		}
+		//Block South is where rail is
 		else if (a_ChunkInterface.GetBlockMeta({ a_BlockX - 1, a_BlockY + 1, a_BlockZ }) == E_META_RAIL_CURVED_ZM_XM
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX - 1, a_BlockY + 1, a_BlockZ }) == E_META_RAIL_CURVED_ZM_XP
 			|| a_ChunkInterface.GetBlockMeta({ a_BlockX - 1, a_BlockY + 1, a_BlockZ }) == E_META_RAIL_CURVED_ZP_XM
@@ -620,19 +621,22 @@ public:
 			num = 2;
 
 		}
-		
+		//Replace block North
 		if (num == 1) {
 			a_Meta = TurnLeftToRight(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX + 1, a_BlockY + 1, a_BlockZ }, a_Meta);
 		}
+		//Replace block south
 		else if (num == 2) {
 			a_Meta = TurnLeftToRight(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX - 1, a_BlockY + 1, a_BlockZ }, a_Meta);
 		}
+		//replace block East
 		else if (num == 3) {
 			a_Meta = TurnUpToDown(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ - 1 }, a_Meta);
 		}
+		//replace block West
 		else if (num == 4) {
 			a_Meta = TurnUpToDown(a_Meta);
 			a_ChunkInterface.SetBlockMeta({ a_BlockX, a_BlockY + 1, a_BlockZ + 1 }, a_Meta);
